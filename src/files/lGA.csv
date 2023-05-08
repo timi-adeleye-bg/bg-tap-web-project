@@ -1,0 +1,775 @@
+name,state_id
+aba north,1
+aba south,1
+arochukwu,1
+bende,1
+ikwuano,1
+isiala ngwa north,1
+isiala ngwa south,1
+isuikwuato,1
+obi ngwa,1
+ohafia,1
+osisioma,1
+ugwunagbo,1
+ukwa east,1
+ukwa west,1
+umuahia north,1
+umuahia south,1
+umu nneochi,1
+demsa,2
+fufure,2
+ganye,2
+gayuk,2
+gombi,2
+grie,2
+hong,2
+jada,2
+lamurde,2
+madagali,2
+maiha,2
+mayo belwa,2
+michika,2
+mubi north,2
+mubi south,2
+numan,2
+shelleng,2
+song,2
+toungo,2
+yola north,2
+yola south,2
+abak,3
+eastern obolo,3
+eket,3
+esit eket,3
+essien udim,3
+etim ekpo,3
+etinan,3
+ibeno,3
+ibesikpo asutan,3
+ibiono-ibom,3
+ika,3
+ikono,3
+ikot abasi,3
+ikot ekpene,3
+ini,3
+itu,3
+mbo,3
+mkpat-enin,3
+nsit-atai,3
+nsit-ibom,3
+nsit-ubium,3
+obot akara,3
+okobo,3
+onna,3
+oron,3
+oruk anam,3
+udung-uko,3
+ukanafun,3
+uruan,3
+urue-offong/oruko,3
+uyo,3
+aguata,4
+anambra east,4
+anambra west,4
+anaocha,4
+awka north,4
+awka south,4
+ayamelum,4
+dunukofia,4
+ekwusigo,4
+idemili north,4
+idemili south,4
+ihiala,4
+njikoka,4
+nnewi north,4
+nnewi south,4
+ogbaru,4
+onitsha north,4
+onitsha south,4
+orumba north,4
+orumba south,4
+oyi,4
+alkaleri,5
+bauchi,5
+bogoro,5
+damban,5
+darazo,5
+dass,5
+gamawa,5
+ganjuwa,5
+giade,5
+itas/gadau,5
+jama'are,5
+katagum,5
+kirfi,5
+misau,5
+ningi,5
+shira,5
+tafawa balewa,5
+toro,5
+warji,5
+zaki,5
+brass,6
+ekeremor,6
+kolokuma/opokuma,6
+nembe,6
+ogbia,6
+sagbama,6
+southern ijaw,6
+yenagoa,6
+agatu,7
+apa,7
+ado,7
+buruku,7
+gboko,7
+guma,7
+gwer east,7
+gwer west,7
+katsina-ala,7
+konshisha,7
+kwande,7
+logo,7
+makurdi,7
+obi,7
+ogbadibo,7
+ohimini,7
+oju,7
+okpokwu,7
+oturkpo,7
+tarka,7
+ukum,7
+ushongo,7
+vandeikya,7
+abadam,8
+askira/uba,8
+bama,8
+bayo,8
+biu,8
+chibok,8
+damboa,8
+dikwa,8
+gubio,8
+guzamala,8
+gwoza,8
+hawul,8
+jere,8
+kaga,8
+kala/balge,8
+konduga,8
+kukawa,8
+kwaya kusar,8
+mafa,8
+magumeri,8
+maiduguri,8
+marte,8
+mobbar,8
+monguno,8
+ngala,8
+nganzai,8
+shani,8
+abi,9
+akamkpa,9
+akpabuyo,9
+bakassi,9
+bekwarra,9
+biase,9
+boki,9
+calabar municipal,9
+calabar south,9
+etung,9
+ikom,9
+obanliku,9
+obubra,9
+obudu,9
+odukpani,9
+ogoja,9
+yakuur,9
+yala,9
+aniocha north,10
+aniocha south,10
+bomadi,10
+burutu,10
+ethiope east,10
+ethiope west,10
+ika north east,10
+ika south,10
+isoko north,10
+isoko south,10
+ndokwa east,10
+ndokwa west,10
+okpe,10
+oshimili north,10
+oshimili south,10
+patani,10
+sapele,10
+udu,10
+ughelli north,10
+ughelli south,10
+ukwuani,10
+uvwie,10
+warri north,10
+warri south,10
+warri south west,10
+abakaliki,11
+afikpo north,11
+afikpo south,11
+ebonyi,11
+ezza north,11
+ezza south,11
+ikwo,11
+ishielu,11
+ivo,11
+izzi,11
+ohaozara,11
+ohaukwu,11
+onicha,11
+akoko-edo,12
+egor,12
+esan central,12
+esan north-east,12
+esan south-east,12
+esan west,12
+etsako central,12
+etsako east,12
+etsako west,12
+igueben,12
+ikpoba okha,12
+orhionmwon,12
+oredo,12
+ovia north-east,12
+ovia south-west,12
+owan east,12
+owan west,12
+uhunmwonde,12
+ado ekiti,13
+efon,13
+ekiti east,13
+ekiti south-west,13
+ekiti west,13
+emure,13
+gbonyin,13
+ido osi,13
+ijero,13
+ikere,13
+ikole,13
+ilejemeje,13
+irepodun/ifelodun,13
+ise/orun,13
+moba,13
+oye,13
+aninri,14
+awgu,14
+enugu east,14
+enugu north,14
+enugu south,14
+ezeagu,14
+igbo etiti,14
+igbo eze north,14
+igbo eze south,14
+isi uzo,14
+nkanu east,14
+nkanu west,14
+nsukka,14
+oji river,14
+udenu,14
+udi,14
+uzo uwani,14
+abaji,15
+bwari,15
+gwagwalada,15
+kuje,15
+kwali,15
+municipal area council,15
+akko,16
+balanga,16
+billiri,16
+dukku,16
+funakaye,16
+gombe,16
+kaltungo,16
+kwami,16
+nafada,16
+shongom,16
+yamaltu/deba,16
+aboh mbaise,17
+ahiazu mbaise,17
+ehime mbano,17
+ezinihitte,17
+ideato north,17
+ideato south,17
+ihitte/uboma,17
+ikeduru,17
+isiala mbano,17
+isu,17
+mbaitoli,17
+ngor okpala,17
+njaba,17
+nkwerre,17
+nwangele,17
+obowo,17
+oguta,17
+ohaji/egbema,17
+okigwe,17
+orlu,17
+orsu,17
+oru east,17
+oru west,17
+owerri municipal,17
+owerri north,17
+owerri west,17
+unuimo,17
+auyo,18
+babura,18
+biriniwa,18
+birnin kudu,18
+buji,18
+dutse,18
+gagarawa,18
+garki,18
+gumel,18
+guri,18
+gwaram,18
+gwiwa,18
+hadejia,18
+jahun,18
+kafin hausa,18
+kazaure,18
+kiri kasama,18
+kiyawa,18
+kaugama,18
+maigatari,18
+malam madori,18
+miga,18
+ringim,18
+roni,18
+sule tankarkar,18
+taura,18
+yankwashi,18
+birnin gwari,19
+chikun,19
+giwa,19
+igabi,19
+ikara,19
+jaba,19
+jema'a,19
+kachia,19
+kaduna north,19
+kaduna south,19
+kagarko,19
+kajuru,19
+kaura,19
+kauru,19
+kubau,19
+kudan,19
+lere,19
+makarfi,19
+sabon gari,19
+sanga,19
+soba,19
+zangon kataf,19
+zaria,19
+ajingi,20
+albasu,20
+bagwai,20
+bebeji,20
+bichi,20
+bunkure,20
+dala,20
+dambatta,20
+dawakin kudu,20
+dawakin tofa,20
+doguwa,20
+fagge,20
+gabasawa,20
+garko,20
+garun mallam,20
+gaya,20
+gezawa,20
+gwale,20
+gwarzo,20
+kabo,20
+kano municipal,20
+karaye,20
+kibiya,20
+kiru,20
+kumbotso,20
+kunchi,20
+kura,20
+madobi,20
+makoda,20
+minjibir,20
+nasarawa,20
+rano,20
+rimin gado,20
+rogo,20
+shanono,20
+sumaila,20
+takai,20
+tarauni,20
+tofa,20
+tsanyawa,20
+tudun wada,20
+ungogo,20
+warawa,20
+wudil,20
+bakori,21
+batagarawa,21
+batsari,21
+baure,21
+bindawa,21
+charanchi,21
+dandume,21
+danja,21
+dan musa,21
+daura,21
+dutsi,21
+dutsin ma,21
+faskari,21
+funtua,21
+ingawa,21
+jibia,21
+kafur,21
+kaita,21
+kankara,21
+kankia,21
+katsina,21
+kurfi,21
+kusada,21
+mai'adua,21
+malumfashi,21
+mani,21
+mashi,21
+matazu,21
+musawa,21
+rimi,21
+sabuwa,21
+safana,21
+sandamu,21
+zango,21
+aleiro,22
+arewa dandi,22
+argungu,22
+augie,22
+bagudo,22
+birnin kebbi,22
+bunza,22
+dandi,22
+fakai,22
+gwandu,22
+jega,22
+kalgo,22
+koko/besse,22
+maiyama,22
+ngaski,22
+sakaba,22
+shanga,22
+suru,22
+wasagu/danko,22
+yauri,22
+zuru,22
+adavi,23
+ajaokuta,23
+ankpa,23
+bassa,23
+dekina,23
+ibaji,23
+idah,23
+igalamela odolu,23
+ijumu,23
+kabba/bunu,23
+kogi,23
+lokoja,23
+mopa muro,23
+ofu,23
+ogori/magongo,23
+okehi,23
+okene,23
+olamaboro,23
+omala,23
+yagba east,23
+yagba west,23
+asa,24
+baruten,24
+edu,24
+ekiti,24
+ifelodun,24
+ilorin east,24
+ilorin south,24
+ilorin west,24
+irepodun,24
+isin,24
+kaiama,24
+moro,24
+offa,24
+oke ero,24
+oyun,24
+pategi,24
+agege,25
+ajeromi-ifelodun,25
+alimosho,25
+amuwo-odofin,25
+apapa,25
+badagry,25
+epe,25
+eti osa,25
+ibeju-lekki,25
+ifako-ijaiye,25
+ikeja,25
+ikorodu,25
+kosofe,25
+lagos island,25
+lagos mainland,25
+mushin,25
+ojo,25
+oshodi-isolo,25
+shomolu,25
+surulere,25
+akwanga,26
+awe,26
+doma,26
+karu,26
+keana,26
+keffi,26
+kokona,26
+lafia,26
+nasarawa,26
+nasarawa egon,26
+obi,26
+toto,26
+wamba,26
+agaie,27
+agwara,27
+bida,27
+borgu,27
+bosso,27
+chanchaga,27
+edati,27
+gbako,27
+gurara,27
+katcha,27
+kontagora,27
+lapai,27
+lavun,27
+magama,27
+mariga,27
+mashegu,27
+mokwa,27
+moya,27
+paikoro,27
+rafi,27
+rijau,27
+shiroro,27
+suleja,27
+tafa,27
+wushishi,27
+abeokuta north,28
+abeokuta south,28
+ado-odo/ota,28
+egbado north,28
+egbado south,28
+ewekoro,28
+ifo,28
+ijebu east,28
+ijebu north,28
+ijebu north east,28
+ijebu ode,28
+ikenne,28
+imeko afon,28
+ipokia,28
+obafemi owode,28
+odeda,28
+odogbolu,28
+ogun waterside,28
+remo north,28
+shagamu,28
+akoko north-east,29
+akoko north-west,29
+akoko south-west,29
+akoko south-east,29
+akure north,29
+akure south,29
+ese odo,29
+idanre,29
+ifedore,29
+ilaje,29
+ile oluji/okeigbo,29
+irele,29
+odigbo,29
+okitipupa,29
+ondo east,29
+ondo west,29
+ose,29
+owo,29
+atakunmosa east,30
+atakunmosa west,30
+aiyedaade,30
+aiyedire,30
+boluwaduro,30
+boripe,30
+ede north,30
+ede south,30
+ife central,30
+ife east,30
+ife north,30
+ife south,30
+egbedore,30
+ejigbo,30
+ifedayo,30
+ifelodun,30
+ila,30
+ilesa east,30
+ilesa west,30
+irepodun,30
+irewole,30
+isokan,30
+iwo,30
+obokun,30
+odo otin,30
+ola oluwa,30
+olorunda,30
+oriade,30
+orolu,30
+osogbo,30
+afijio,31
+akinyele,31
+atiba,31
+atisbo,31
+egbeda,31
+ibadan north,31
+ibadan north-east,31
+ibadan north-west,31
+ibadan south-east,31
+ibadan south-west,31
+ibarapa central,31
+ibarapa east,31
+ibarapa north,31
+ido,31
+irepo,31
+iseyin,31
+itesiwaju,31
+iwajowa,31
+kajola,31
+lagelu,31
+ogbomosho north,31
+ogbomosho south,31
+ogo oluwa,31
+olorunsogo,31
+oluyole,31
+ona ara,31
+orelope,31
+ori ire,31
+oyo,31
+oyo east,31
+saki east,31
+saki west,31
+surulere,31
+bokkos,32
+barkin ladi,32
+bassa,32
+jos east,32
+jos north,32
+jos south,32
+kanam,32
+kanke,32
+langtang south,32
+langtang north,32
+mangu,32
+mikang,32
+pankshin,32
+qua'an pan,32
+riyom,32
+shendam,32
+wase,32
+abua/odual,33
+ahoada east,33
+ahoada west,33
+akuku-toru,33
+andoni,33
+asari-toru,33
+bonny,33
+degema,33
+eleme,33
+emuoha,33
+etche,33
+gokana,33
+ikwerre,33
+khana,33
+obio/akpor,33
+ogba/egbema/ndoni,33
+ogu/bolo,33
+okrika,33
+omuma,33
+opobo/nkoro,33
+oyigbo,33
+port harcourt,33
+tai,33
+binji,34
+bodinga,34
+dange shuni,34
+gada,34
+goronyo,34
+gudu,34
+gwadabawa,34
+illela,34
+isa,34
+kebbe,34
+kware,34
+rabah,34
+sabon birni,34
+shagari,34
+silame,34
+sokoto north,34
+sokoto south,34
+tambuwal,34
+tangaza,34
+tureta,34
+wamako,34
+wurno,34
+yabo,34
+ardo kola,35
+bali,35
+donga,35
+gashaka,35
+gassol,35
+ibi,35
+jalingo,35
+karim lamido,35
+kumi,35
+lau,35
+sardauna,35
+takum,35
+ussa,35
+wukari,35
+yorro,35
+zing,35
+bade,36
+bursari,36
+damaturu,36
+fika,36
+fune,36
+geidam,36
+gujba,36
+gulani,36
+jakusko,36
+karasuwa,36
+machina,36
+nangere,36
+nguru,36
+potiskum,36
+tarmuwa,36
+yunusari,36
+yusufari,36
+anka,37
+bakura,37
+birnin magaji/kiyaw,37
+bukkuyum,37
+bungudu,37
+gummi,37
+gusau,37
+kaura namoda,37
+maradun,37
+maru,37
+shinkafi,37
+talata mafara,37
+chafe,37
+zurmi,37
