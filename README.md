@@ -20,11 +20,11 @@ Port = 3000
 
 -Open cloned folder and run `npm install`
 
-- Create a new database in MongoDB called `operations`
+- Create a new database in PostgresDB called `operations`
 
   -All other details for the db can be found in the .env file
 
-  -Run `npm run files` to load the database with imported tables
+  -Run `npm run files` to load the database with imported tables (nationality, state, lga, product, seed)
 
   -Run `npm run dev` to start the server.
 
