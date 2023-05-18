@@ -129,7 +129,7 @@ const operatorUpdate = async (req) => {
     if (full_name && full_name.trim() !== "") {
       newName = full_name.trim();
     }
-
+    console.log(newName);
     let newNumber = null;
     if (phone_number && phone_number.trim() !== "") {
       if (!pattern.test(phone_number)) {
@@ -143,9 +143,9 @@ const operatorUpdate = async (req) => {
     if (sex && sex.trim() !== "") {
       if (!["male", "female"].includes(sex.toLowerCase())) {
         throw new Error("Sex must either be Male or Female");
+      } else {
+        newSex = sex.toLowerCase().trim();
       }
-    } else {
-      newSex = sex.toLowerCase().trim();
     }
 
     let newNation = null;
@@ -219,6 +219,7 @@ const operatorUpdate = async (req) => {
     }
     return rows;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };

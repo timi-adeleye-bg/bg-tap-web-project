@@ -7,6 +7,8 @@ const {
   pictureUpload,
   productSelect,
   getProduct,
+  recruitUser,
+  uploadID,
 } = require("../controllers/operatorController");
 const { authToken } = require("../middlewares/authUser");
 const multer = require("multer");
@@ -49,5 +51,11 @@ operatorRoute.post("/:product_id/:seed_id", authToken, productSelect);
 
 //route to get all products selected by an operator
 operatorRoute.get("/selections", authToken, getProduct);
+
+//route to register a field officer
+operatorRoute.post("/recruit", authToken, recruitUser);
+
+//route to update field officer picture
+operatorRoute.put("/upload/:id", authToken, upload.single("idCard"), uploadID);
 
 module.exports = operatorRoute;

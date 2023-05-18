@@ -6,6 +6,8 @@ const {
   getOperatorSelections,
 } = require("../dao/operator.dao");
 
+const { recruitFieldOfficer, uploadIDImage } = require("../dao/fo.dao");
+
 //@desc Create New Operator
 //@route POST /api/operator/register
 //@access private
@@ -74,10 +76,40 @@ const getProduct = async (req, res) => {
   }
 };
 
+//@desc Recruit New User
+//@route POST /api/operator/recruit
+//@access private
+
+const recruitUser = async (req, res) => {
+  try {
+    let result = await recruitFieldOfficer(req);
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json(error.message);
+  }
+};
+
+//@desc Upload Field Officer Image
+//@route PUT /api/operator/upload/:id
+//@access private
+
+const uploadID = async (req, res) => {
+  try {
+    let result = await uploadIDImage(req);
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json(error.message);
+  }
+};
+
 module.exports = {
   createOperator,
   updateOperator,
   pictureUpload,
   productSelect,
   getProduct,
+  recruitUser,
+  uploadID,
 };

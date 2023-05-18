@@ -5,6 +5,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/user");
 const operatorRoute = require("./routes/operator");
+const adminRoute = require("./routes/admin");
 
 //configure dotenv
 dotenv.config();
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoute); //user route configuration
 app.use("/api/operator", operatorRoute); // operator route configuration
+app.use("/api/admin", adminRoute); //admin route configuration
 
 app.listen(port, () => {
   console.log(`server listening at http://localhost:${port}`);

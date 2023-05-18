@@ -51,9 +51,11 @@ const validateUserData = async (req) => {
       throw new Error("Role must be a string");
     } else if (
       role !== undefined &&
-      !["operator", "member"].includes(role.toLowerCase())
+      !["operator", "field officer", "admin"].includes(role.toLowerCase())
     ) {
-      throw new Error("You can either sign up as an operator or as a member");
+      throw new Error(
+        "You can either sign up as an operator or as a field officer"
+      );
     } else if (!emailPattern.test(email.trim())) {
       throw new Error("Please enter a valid email address");
     } else {

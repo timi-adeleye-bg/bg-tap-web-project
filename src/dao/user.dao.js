@@ -73,7 +73,7 @@ const authUserLogin = async (req) => {
       ) {
         return { user: { id: rows[0].user_id, role: rows[0].role } };
       } else {
-        throw new Error("Username and/or password do not match");
+        throw new Error("Email and/or password do not match");
       }
     } else {
       throw new Error("User does not exist");

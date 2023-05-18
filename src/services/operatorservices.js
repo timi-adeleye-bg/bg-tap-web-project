@@ -92,14 +92,18 @@ const validateNationality = async (req) => {
 //validate operator state of operation
 const validateState = async (req) => {
   try {
-    const { state } = req.body;
+    const { state, nationality } = req.body;
+    let countryID;
 
     //fetch country Id
-    const countryID = await validateNationality(req);
+    if (nationality) {
+      countryID = await validateNationality(req);
+    }
 
     //connect to database to fetch country id associated with selected state
     const conn = await pool.connect();
-    const sql = `SELECT state_id, name, country_id FROM state WHERE name = ($1);`;
+    const sql =
+      "SELECT state_id, name, country_id FROM state WHERE name = ($1);";
     const result = await conn.query(sql, [state.toLowerCase().trim()]);
     const rows = result.rows[0];
     conn.release();
@@ -110,7 +114,7 @@ const validateState = async (req) => {
 
     //validate if selected state belong to the operator nationality
     const stateCountryID = rows.country_id;
-    if (!(countryID === stateCountryID)) {
+    if (countryID && countryID !== stateCountryID) {
       throw new Error("State selected doesn't exist in your nation");
     }
     return rows.state_id;

@@ -153,3 +153,33 @@ const uploadSeed = () => {
 };
 
 console.log(uploadSeed());
+
+//import hub files
+const uploadHub = () => {
+  const results = [];
+
+  fs.createReadStream("./src/files/hub.csv")
+    .pipe(csv())
+    .on("data", (data) => {
+      results.push(data);
+    })
+    .on("end", async () => {
+      console.log("CSV file processed successfully");
+
+      try {
+        for (const row of results) {
+          const query = {
+            text: "INSERT INTO hub(name, state_id) VALUES($1, $2)",
+            values: [row.name, row.state_id],
+          };
+
+          await pool.query(query);
+          console.log("Data Inserted Successfully");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    });
+};
+
+console.log(uploadHub());
