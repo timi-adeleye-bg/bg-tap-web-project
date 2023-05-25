@@ -1,6 +1,14 @@
 //import required modules
 const pool = require("../database/dbConfig");
 const { getUserRole } = require("../services/userservices");
+const {
+  checkRecruitStatus,
+  getRandomizedQuestions,
+  getCorrectAnswers,
+  checkDuplicateUserSession,
+  getSessionId,
+  checkDuplicateUserSubmission,
+} = require("../services/adminservices");
 
 //get all field officers belonging to a particular operator
 const getOperatorFieldOfficers = async (req) => {
@@ -29,4 +37,101 @@ const getOperatorFieldOfficers = async (req) => {
   }
 };
 
-module.exports = { getOperatorFieldOfficers };
+//obtain number of test session by field_officer
+const conductTestSession = async (req) => {
+  try {
+    //obtain user_id from params
+    const { user_id } = req.params;
+
+    //validate if field officer is recruited and obtain operator id
+    const operator_id = await checkRecruitStatus(req);
+
+    //validate if user already conducted test
+    await checkDuplicateUserSession(req);
+
+    //get questions for test session
+    const questions = await getRandomizedQuestions(req);
+
+    //connect to database and count the number of test session by a field officer
+    const conn = await pool.connect();
+    const sql =
+      "INSERT INTO session(user_id, operator_id) VALUES($1, $2) RETURNING *;";
+    const result = await conn.query(sql, [user_id, operator_id]);
+    const rows = result.rows[0];
+    conn.release();
+
+    //return questions generated if session was created
+    console.log(rows);
+    return questions;
+  } catch (error) {
+    throw error;
+  }
+};
+
+//conduct assessment for field officers and return assessment score
+const submitTestSession = async (req) => {
+  try {
+    //obtain field officers answers based on questions asked and user id as param
+    const { answers } = req.body;
+
+    //validate if user is an admin to complete action
+    const role = await getUserRole(req);
+    if (role !== "admin") {
+      throw new Error("You can not complete operation");
+    }
+
+    //validates if user already submitted test
+    await checkDuplicateUserSubmission(req);
+
+    //obtain the questions id and field officer answers and store in questions and answers column
+    const questions = answers.map((test) => test.id);
+    const choices = answers.map((test) => test.answer);
+
+    //obtain the current test session for the field officer
+    const session_id = await getSessionId(req);
+
+    //obtain field officer score
+    let res = 0;
+    const correct_answers = await getCorrectAnswers();
+
+    //loop through correct answers and check if field officer choice of answer is correct
+    for (let i = 0; i < answers.length; i++) {
+      const FO_choice = answers[i];
+
+      const assessment = correct_answers.find(
+        (test) => test.id === FO_choice.id
+      );
+      if (assessment) {
+        if (FO_choice.answer === assessment.answer) {
+          res += 1;
+        }
+      } else {
+        throw new Error("Question type invalid");
+      }
+    }
+
+    //obtain field officer score
+    const score = res;
+
+    //connect to database and store values for field officer
+    const conn = await pool.connect();
+    const sql =
+      "INSERT INTO test_results(session_id, question_ids, answers, score) VALUES($1, $2, $3, $4) RETURNING *;";
+    const values = [session_id, questions, choices, score];
+    const result = await conn.query(sql, values);
+    const rows = result.rows[0];
+    conn.release();
+
+    console.log("Test successfully conducted");
+    console.log(rows);
+    return `You obtained a score of ${rows.score} out of ${answers.length} questions`;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = {
+  getOperatorFieldOfficers,
+  conductTestSession,
+  submitTestSession,
+};

@@ -183,3 +183,33 @@ const uploadHub = () => {
 };
 
 console.log(uploadHub());
+
+//import question files
+const uploadQuestion = () => {
+  const results = [];
+
+  fs.createReadStream("./src/files/questions.csv")
+    .pipe(csv())
+    .on("data", (data) => {
+      results.push(data);
+    })
+    .on("end", async () => {
+      console.log("CSV file processed successfully");
+
+      try {
+        for (const row of results) {
+          const query = {
+            text: "INSERT INTO questions(question, category, answer, options) VALUES($1, $2, $3, $4)",
+            values: [row.question, row.category, row.answer, row.options],
+          };
+
+          await pool.query(query);
+          console.log("Data Inserted Successfully");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    });
+};
+
+console.log(uploadQuestion());
