@@ -52,6 +52,16 @@ Select Product & seed type - route PUT /api/operator/:product_id/:seed_id
 
 Operator Selections - route GET /api/operator/selection
 
+Operator Recruit Field Officers - route POST /api/operator/recruit
+
+### Admin
+
+Fetch all Recruited Officers for an Operator - route GET /api/admin/operator/:id
+
+Generate Test Questions for Field Officer - route GET /api/admin/questions/:id
+
+Submit Assessment and Get Score - route POST /api/admin/assessment/:id
+
 ## Parameters for Each Endpoint
 
 ### Users
