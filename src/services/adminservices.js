@@ -6,12 +6,12 @@ const { getUserRole } = require("../services/userservices");
 const checkRecruitStatus = async (req) => {
   try {
     //obtain user id from params
-    const { user_id } = req.params;
+    const { id } = req.params;
 
     //connect to database and check if user exist
     const conn = await pool.connect();
-    const sql = "SELECT * FROM field_officer WHERE user_id = ($1);";
-    const result = await conn.query(sql, [user_id]);
+    const sql = "SELECT * FROM field_officer WHERE officer_id = ($1);";
+    const result = await conn.query(sql, [id]);
     const rows = result.rows[0];
     conn.release();
 
@@ -60,7 +60,6 @@ const getRandomizedQuestions = async (req) => {
       );
       randomizedQuestions.push(...randomizedCategoryQuestions);
     }
-
     return randomizedQuestions;
   } catch (error) {
     throw error;
@@ -70,12 +69,12 @@ const getRandomizedQuestions = async (req) => {
 //get test session id
 const getSessionId = async (req) => {
   try {
-    const { user_id } = req.params;
+    const { id } = req.params;
 
     //connect to database and get session id
     const conn = await pool.connect();
-    const sql = "SELECT session_id FROM session WHERE user_id = ($1);";
-    const result = await conn.query(sql, [user_id]);
+    const sql = "SELECT session_id FROM session WHERE officer_id = ($1);";
+    const result = await conn.query(sql, [id]);
     const rows = result.rows[0];
     conn.release();
 
@@ -91,12 +90,12 @@ const getSessionId = async (req) => {
 //check if user already conducted test session
 const checkDuplicateUserSession = async (req) => {
   try {
-    const { user_id } = req.params;
+    const { id } = req.params;
 
     //connect to database and get session id
     const conn = await pool.connect();
-    const sql = "SELECT * FROM session WHERE user_id = ($1);";
-    const result = await conn.query(sql, [user_id]);
+    const sql = "SELECT * FROM session WHERE officer_id = ($1);";
+    const result = await conn.query(sql, [id]);
     const rows = result.rows[0];
     conn.release();
 
@@ -133,7 +132,7 @@ const checkDuplicateUserSubmission = async (req) => {
 
     //connect to database and get session id
     const conn = await pool.connect();
-    const sql = "SELECT * FROM test_result WHERE session_id = ($1);";
+    const sql = "SELECT * FROM test_results WHERE session_id = ($1);";
     const result = await conn.query(sql, [session_id]);
     const rows = result.rows[0];
     conn.release();
@@ -147,6 +146,27 @@ const checkDuplicateUserSubmission = async (req) => {
   }
 };
 
+//validate if questions selected is the same as question generated
+const getSessionQuestions = async (req) => {
+  try {
+    const { id } = req.params;
+
+    //connect to database and get session questions
+    const conn = await pool.connect();
+    const sql = "SELECT questions FROM session WHERE officer_id = ($1);";
+    const result = await conn.query(sql, [id]);
+    const rows = result.rows[0];
+    conn.release();
+
+    if (!rows) {
+      throw new Error("User yet to conduct test");
+    }
+    return rows.questions;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   checkRecruitStatus,
   getRandomizedQuestions,
@@ -154,4 +174,5 @@ module.exports = {
   checkDuplicateUserSession,
   getCorrectAnswers,
   checkDuplicateUserSubmission,
+  getSessionQuestions,
 };

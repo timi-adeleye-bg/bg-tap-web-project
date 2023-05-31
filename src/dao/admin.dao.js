@@ -8,6 +8,7 @@ const {
   checkDuplicateUserSession,
   getSessionId,
   checkDuplicateUserSubmission,
+  getSessionQuestions,
 } = require("../services/adminservices");
 
 //get all field officers belonging to a particular operator
@@ -41,7 +42,7 @@ const getOperatorFieldOfficers = async (req) => {
 const conductTestSession = async (req) => {
   try {
     //obtain user_id from params
-    const { user_id } = req.params;
+    const { id } = req.params;
 
     //validate if field officer is recruited and obtain operator id
     const operator_id = await checkRecruitStatus(req);
@@ -51,12 +52,13 @@ const conductTestSession = async (req) => {
 
     //get questions for test session
     const questions = await getRandomizedQuestions(req);
+    const questionIds = questions.map((question) => question.id);
 
     //connect to database and count the number of test session by a field officer
     const conn = await pool.connect();
     const sql =
-      "INSERT INTO session(user_id, operator_id) VALUES($1, $2) RETURNING *;";
-    const result = await conn.query(sql, [user_id, operator_id]);
+      "INSERT INTO session(officer_id, operator_id, questions) VALUES($1, $2, $3) RETURNING *;";
+    const result = await conn.query(sql, [id, operator_id, questionIds]);
     const rows = result.rows[0];
     conn.release();
 
@@ -86,9 +88,21 @@ const submitTestSession = async (req) => {
     //obtain the questions id and field officer answers and store in questions and answers column
     const questions = answers.map((test) => test.id);
     const choices = answers.map((test) => test.answer);
+    console.log(questions);
 
     //obtain the current test session for the field officer
     const session_id = await getSessionId(req);
+
+    //get session questions
+    const sessionQuestions = await getSessionQuestions(req);
+    console.log(sessionQuestions);
+
+    //validate questions
+    for (let i = 0; i < sessionQuestions.length; i++) {
+      if (questions[i] !== sessionQuestions[i]) {
+        throw new Error("Question not valid");
+      }
+    }
 
     //obtain field officer score
     let res = 0;

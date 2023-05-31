@@ -12,9 +12,9 @@ const { authToken } = require("../middlewares/authUser");
 adminRoute.get("/operator/:id", authToken, getOperatorRecruits);
 
 //route to generate list of questions for assessment
-adminRoute.get("/questions/:user_id", authToken, conductAssessment);
+adminRoute.get("/questions/:id", authToken, conductAssessment);
 
 //route to conduct assessment
-adminRoute.post("/answers/:user_id", authToken, submitAssessment);
+adminRoute.post("/answers/:id", authToken, submitAssessment);
 
 module.exports = adminRoute;

@@ -9,11 +9,11 @@ const {
 const {
   validateFieldOfficerData,
   validateGovernmentID,
-  getFieldOfficerUserId,
   checkFODuplicateNIN,
   checkDuplicateFieldOfficer,
   validateHub,
   checkDuplicateID,
+  checkDuplicateBVN,
 } = require("../services/foservices");
 
 //recruit a new field officer
@@ -21,7 +21,6 @@ const recruitFieldOfficer = async (req) => {
   try {
     const {
       full_name,
-      email,
       phone_number,
       sex,
       date_of_birth,
@@ -38,7 +37,7 @@ const recruitFieldOfficer = async (req) => {
     await validateFieldOfficerData(req);
 
     //validate if user to be recruited is a field officer and obtain user id
-    const user_id = await getFieldOfficerUserId(req);
+    //const user_id = await getFieldOfficerUserId(req);
 
     //obtain operator id
     const operator_id = await getOperatorStatus(req);
@@ -48,9 +47,10 @@ const recruitFieldOfficer = async (req) => {
     await validatelGA(req);
     await validateHub(req);
 
-    //check for duplicate nin and duplicate field officer
+    //check for duplicate nin, bvn and duplicate field officer
     await checkFODuplicateNIN(req);
     await checkDuplicateNIN(req);
+    await checkDuplicateBVN(req);
     await checkDuplicateFieldOfficer(req);
 
     //validate government Id based on Government type and check if it already exist
@@ -60,7 +60,7 @@ const recruitFieldOfficer = async (req) => {
     //populate field officer into database
     const conn = await pool.connect();
     const sql =
-      "INSERT INTO field_officer(full_name, phone_number, sex, date_of_birth, bvn, nin, state, lga, hub, government_id, government_id_type, operator_id, user_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *;";
+      "INSERT INTO field_officer(full_name, phone_number, sex, date_of_birth, bvn, nin, state, lga, hub, government_id, government_id_type, operator_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *;";
     const values = [
       full_name.trim(),
       phone_number,
@@ -74,7 +74,6 @@ const recruitFieldOfficer = async (req) => {
       government_id,
       government_id_type.toLowerCase().trim(),
       operator_id,
-      user_id,
     ];
     const result = await conn.query(sql, values);
     const rows = result.rows[0];
@@ -102,7 +101,7 @@ const uploadIDImage = async (req) => {
     //connect to database and upload field officer picture
     const conn = await pool.connect();
     const sql =
-      "UPDATE field_officer SET government_id_card = ($1), updated_at = NOW() WHERE user_id = ($2) AND operator_id = ($3) RETURNING *;";
+      "UPDATE field_officer SET government_id_card = ($1), updated_at = NOW() WHERE officer_id = ($2) AND operator_id = ($3) RETURNING *;";
     const result = await conn.query(sql, [id_card, id, operator_id]);
     const rows = result.rows[0];
     conn.release();

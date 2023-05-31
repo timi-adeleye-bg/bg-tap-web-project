@@ -10,7 +10,6 @@ const validateFieldOfficerData = async (req) => {
     //validate fields passed by client
     const {
       full_name,
-      email,
       phone_number,
       sex,
       date_of_birth,
@@ -24,7 +23,6 @@ const validateFieldOfficerData = async (req) => {
     } = req.body;
     const keys = [
       "full_name",
-      "email",
       "phone_number",
       "sex",
       "date_of_birth",
@@ -40,12 +38,10 @@ const validateFieldOfficerData = async (req) => {
 
     //declare regex pattern to validate bvn, nin, email, phone number and government_id
     const pattern = /^(?!0{11})\d{11}$/;
-    const emailPattern = /^\S+@\S+\.\S+$/;
 
     //validate information passed to the fields
     if (
       !full_name ||
-      !email ||
       !phone_number ||
       !sex ||
       !date_of_birth ||
@@ -58,8 +54,6 @@ const validateFieldOfficerData = async (req) => {
       !government_id_type
     ) {
       throw new Error(`${keys} are all required`);
-    } else if (!emailPattern.test(email)) {
-      throw new Error("Email not valid");
     } else if (!pattern.test(phone_number)) {
       throw new Error("Please enter a valid Phone Number");
     } else if (!["male", "female"].includes(sex.toLowerCase())) {
@@ -161,6 +155,29 @@ const checkFODuplicateNIN = async (req) => {
   }
 };
 
+//check for duplicate bvn
+const checkDuplicateBVN = async (req) => {
+  try {
+    const { bvn } = req.body;
+
+    //connect to database to check if bvn exist
+    const conn = await pool.connect();
+    const sql = "SELECT bvn from field_officer;";
+    const result = await conn.query(sql);
+    const rows = result.rows;
+    conn.release();
+
+    const foundBVN = rows.find((user) => user.bvn === bvn);
+
+    if (foundBVN) {
+      throw new Error("BVN already in use");
+    }
+    return true;
+  } catch (error) {
+    throw error;
+  }
+};
+
 //check for duplicate government_id
 const checkDuplicateID = async (req) => {
   try {
@@ -190,13 +207,13 @@ const checkDuplicateID = async (req) => {
 //check if field officer is already recruited
 const checkDuplicateFieldOfficer = async (req) => {
   try {
-    const user_id = await getFieldOfficerUserId(req);
+    const { nin, bvn } = req.body;
     const operator_id = await getOperatorStatus(req);
 
     //connect to database to check if user already exist
     const conn = await pool.connect();
-    const sql = "SELECT * FROM field_officer WHERE user_id = ($1);";
-    const result = await conn.query(sql, [user_id]);
+    const sql = "SELECT * FROM field_officer WHERE nin = ($1) AND bvn = ($2);";
+    const result = await conn.query(sql, [nin, bvn]);
     const rows = result.rows[0];
     conn.release();
 
@@ -239,6 +256,7 @@ module.exports = {
   validateGovernmentID,
   getFieldOfficerUserId,
   checkFODuplicateNIN,
+  checkDuplicateBVN,
   checkDuplicateID,
   checkDuplicateFieldOfficer,
   validateHub,
